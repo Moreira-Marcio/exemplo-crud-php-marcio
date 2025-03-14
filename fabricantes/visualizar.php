@@ -2,8 +2,11 @@
 require_once "../src/funcoes-fabricantes.php";
 
 $listaDeFabricantes=listarFabricantes($conexao);
+
+//contando os elementos 
+$quantidade = count($listaDeFabricantes);
 ?>
-<pre><?=var_dump($listaDeFabricantes)?></pre>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,7 +28,7 @@ $listaDeFabricantes=listarFabricantes($conexao);
 
 
         <table class="table table-hover table-bordered w-50">
-            <caption>Lista de Fabricantes</caption>
+            <caption>Lista de Fabricantes: <?=$quantidade?></caption>
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
@@ -33,18 +36,12 @@ $listaDeFabricantes=listarFabricantes($conexao);
                 </tr>
             </thead>
             <tbody>
+        <?php foreach($listaDeFabricantes as $fabricante) {?>            
                 <tr>
-                    <td> Identificador do fabricante 1... </td>
-                    <td> Nome do fabricante 1... </td>
+                    <td> <?=$fabricante["id"]?></td>
+                    <td> <?= $fabricante["nome"]?> </td>
                 </tr>
-                <tr>
-                    <td> Identificador do fabricante 2... </td>
-                    <td> Nome do fabricante 2... </td>
-                </tr>
-                <tr>
-                    <td> Identificador do fabricante 3... </td>
-                    <td> Nome do fabricante 3... </td>
-                </tr>
+                <?php } ?> 
             </tbody>
         </table>
     </div>

@@ -6,7 +6,7 @@ require_once "conecta.php";
 
 function listarFabricantes(PDO $conexao):array {
 
-    $sql =" SELECT * FROM fabricantes";
+    $sql =" SELECT * FROM fabricantes ORDER BY nome";
 
     $consulta = $conexao->prepare($sql);
 
