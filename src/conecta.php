@@ -10,17 +10,17 @@ $banco = "vendas";
 //passamos no tryu tudoque queremosque seja feito(as ações de confi/conexao bd)
 try {
     $conexao = new PDO(
-    "mysql:host=$servidor;dbname=$banco;charset=utf8",
-    $usuario, $senha
-   
-    ); 
-    $conexao ->setAttribute(
-    PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION
-    );
+        "mysql:host=$servidor;dbname=$banco;charset=utf8",
+        $usuario,
+        $senha
 
-    } catch (Exception $erro) {
-   die("deu ruim: ".$erro->getMessege() );
+    );
+    $conexao->setAttribute(
+        PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION
+    );
+} catch (Exception $erro) {
+    die("deu ruim: " . $erro->getMessage());
 }
 
 //criando conexão com o bando ucando a classe pdo
@@ -29,6 +29,3 @@ try {
 
 
 /* configurar pdo para lançar execeçoes/erros caso ocorram */
-
-
-?>

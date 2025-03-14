@@ -1,3 +1,9 @@
+<?php
+require_once "../src/funcoes-fabricantes.php";
+
+$listaDeFabricantes=listarFabricantes($conexao);
+?>
+<pre><?=var_dump($listaDeFabricantes)?></pre>
 <!DOCTYPE html>
 <html lang="pt-br">
 
