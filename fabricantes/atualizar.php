@@ -5,6 +5,16 @@ $id = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
 
 //chamando a função para carregar os dados de um fabricante
 $fabricante = listarUmFabricante($conexao, $id);
+
+if(isset($_POST['atualizar'])){
+    $nome = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_SPECIAL_CHARS);
+
+    atualizarFabricante($conexao, $id, $nome);
+
+
+    header ("location:vizualizar.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +33,7 @@ $fabricante = listarUmFabricante($conexao, $id);
         <hr>
 
         <form action="" method="post" class="w-25">
+            <input type="hiden">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>               
                 <input value="<?=$fabricante['nome']?>"  class="form-control" required type="text" name="nome" id="nome">

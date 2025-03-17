@@ -49,6 +49,23 @@ function listarFabricantes(PDO $conexao):array {
             die("Erro ao carregarv fabricante: ".$erro->getMessage());
         }
     }
+
+
+
+    function atualizarFabricante(PDO $conexao, string $nome, int $idFabricante):void{
+        $sql = "UPDATE fabricantes SET nome = :nome WHERE id =:id";
+        //UPDATE cursos SET professor_id = 1 WHERE id = 5;
+
+        try {
+            $consulta = $conexao->prepare($sql);                    
+            $consulta->bindValue(":nome", $nome,PDO::PARAM_STR);
+            $consulta->execute();
+           
+        } catch (Exception $erro) {
+            die("erro ao inserir".$erro->getMessage());
+        }
+
+
+    }
     
 
-?>
