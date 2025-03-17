@@ -11,6 +11,9 @@
     );
     //inserindo um novo fabricanteatraves de uma função
     inserirFabricante($conexao,$nome);
+    //redirecionar para visualização
+    header("location:visualizar.php");
+    exit; //equivalente ao die
   }
 ?>
 
