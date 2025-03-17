@@ -4,8 +4,9 @@ require_once "../src/funcoes-fabricantes.php";
 $id = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
 
 //chamando a função para carregar os dados de um fabricante
-$fabricante = listarUmFabricantes($conexao, $id);
+$fabricante = listarUmFabricante($conexao, $id);
 ?>
+<pre><?=var_dump($fabricante)?></pre>
 <!DOCTYPE html>
 <html lang="pt-br">
 
