@@ -59,6 +59,7 @@ function listarFabricantes(PDO $conexao):array {
         try {
             $consulta = $conexao->prepare($sql);                    
             $consulta->bindValue(":nome", $nome,PDO::PARAM_STR);
+            $consulta->bindValue(":id", $idFabricante,PDO::PARAM_INT);
             $consulta->execute();
            
         } catch (Exception $erro) {

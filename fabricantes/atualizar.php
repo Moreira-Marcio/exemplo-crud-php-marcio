@@ -9,10 +9,10 @@ $fabricante = listarUmFabricante($conexao, $id);
 if(isset($_POST['atualizar'])){
     $nome = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_SPECIAL_CHARS);
 
-    atualizarFabricante($conexao, $id, $nome);
+    atualizarFabricante($conexao, $nome, $id);
 
 
-    header ("location:vizualizar.php");
+    header ("location:visualizar.php");
     exit;
 }
 ?>
@@ -33,7 +33,7 @@ if(isset($_POST['atualizar'])){
         <hr>
 
         <form action="" method="post" class="w-25">
-            <input type="hiden">
+            <input type="hidden" name="id" value="<?=$fabricante?>">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>               
                 <input value="<?=$fabricante['nome']?>"  class="form-control" required type="text" name="nome" id="nome">
