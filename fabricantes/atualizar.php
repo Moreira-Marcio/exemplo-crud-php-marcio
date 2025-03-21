@@ -12,7 +12,8 @@ if(isset($_POST['atualizar'])){
     atualizarFabricante($conexao, $nome, $id);
 
 
-    header ("location:visualizar.php");
+    header ("location:vis
+    ,0ualizar.php");
     exit;
 }
 ?>
