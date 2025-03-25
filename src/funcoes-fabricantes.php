@@ -70,6 +70,21 @@ function listarFabricantes(PDO $conexao):array {
 
     }
 
-    
+    //excluindo um fabruicante
+
+    function excluirFabricante($conexao,$idFabricante):void{
+        $sql = "DELETE FROM fabricantes WHERE id = :id";
+
+        try {
+            $consulta = $conexao->prepare($sql);                    
+            $consulta->bindValue(":id", $idFabricante,PDO::PARAM_INT);
+            $consulta->execute();
+           
+        } catch (Exception $erro) {
+            die("erro ao excluir fabricante: ".$erro->getMessage());
+        }
+
+
+    }
     
 
