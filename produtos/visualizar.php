@@ -1,6 +1,6 @@
 <?php
 require_once "../src/funcoes-produtos.php";
-$listaDeProdutoas=listarProdutos($conexao);
+$listaDeProdutos=listarProdutos($conexao);
 
 ?>
 
@@ -23,17 +23,18 @@ $listaDeProdutoas=listarProdutos($conexao);
         <h2>Lendo e carregando todos os produtos.</h2>
 
         <p><a class="btn btn-primary btn-sm" href="inserir.php">Inserir novo produto</a></p>
-
-        <div class="row">
-            <div class="col-sm-=6">
+        
+        <div class="row g-1">
+        <?php foreach($listaDeProdutos as $produtos) {?> 
+            <div class="col-sm-6 rounded-2 border border-primary border border-3">
                 <article class="bg-body-secundary p-2">
-                    <h3>Nome do Produto</h3>
-                    <h4>Fabricante do Produto</h4>
-                    <p><b>Preço:</b> do produto</p>
-                    <p><b>Quantidade: </b>do produto</p>
+                    <h3>Nome do Produto <?=$produtos["nome"]?></h3>
+                    <h4>Fabricante do Produto <?=$produtos["fabricante_id"]?></h4>
+                    <p><b>Preço:</b> <?=$produtos["preco"]?></p>
+                    <p><b>Quantidade: </b><?=$produtos["quantidade"]?></p>
                 </article>
             </div>
-
+          <?php } ?>
         </div>
 
 
