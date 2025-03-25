@@ -1,3 +1,9 @@
+<?php
+require_once "../src/funcoes-fabricantes.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,12 +16,12 @@
 <div class="container mt-2 shadow-lg rounded pb-1">
     <h1>Fabricantes | DELETE</h1>
     <hr>
-
+    
     <div class="alert alert-danger w-50">
         <p> Deseja realmente excluir este fabricante?</p>
         
         <a href="visualizar.php" class="btn btn-secondary">Não</a>
-        <a href="" class="btn btn-danger">Sim</a>        
+        <a href="?confirmar-exclusao" class="btn btn-danger">Sim</a>        
     </div>
 
 </div>

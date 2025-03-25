@@ -41,7 +41,7 @@ function listarFabricantes(PDO $conexao):array {
 
         try {
             $consulta= $conexao->prepare($sql);
-            $consulta->bindValue(":id",$idFabricante, PDO::PARAM_STR);
+            $consulta->bindValue(":id",$idFabricante, PDO::PARAM_INT);
             $consulta->execute();
             //usamos o fetch para garantir o retorno de apenas um unico array associativo com o resultado 
             return $consulta->fetch(PDO::FETCH_ASSOC);
@@ -69,5 +69,7 @@ function listarFabricantes(PDO $conexao):array {
 
 
     }
+
+    
     
 
