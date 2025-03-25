@@ -1,3 +1,10 @@
+<?php
+require_once "../src/funcoes-produtos.php";
+$listaDeProdutoas=listarProdutos($conexao);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
