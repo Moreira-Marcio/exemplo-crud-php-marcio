@@ -41,7 +41,7 @@ function listarFabricantes(PDO $conexao):array {
 
         try {
             $consulta= $conexao->prepare($sql);
-            $consulta->bindValue(":id",$idFabricante, PDO::PARAM_INT);
+            $consulta->bindValue(":id",$idFabricante, PDO::PARAM_STR);
             $consulta->execute();
             //usamos o fetch para garantir o retorno de apenas um unico array associativo com o resultado 
             return $consulta->fetch(PDO::FETCH_ASSOC);
@@ -52,9 +52,10 @@ function listarFabricantes(PDO $conexao):array {
 
 
 
-    function atualizarFabricante(PDO $conexao, string $nome, int $idFabricante):void{
+    function atualizarFabricante( $conexao, string $nome, int $idFabricante):void{
         $sql = "UPDATE fabricantes SET nome = :nome WHERE id =:id";
         //UPDATE cursos SET professor_id = 1 WHERE id = 5;
+        // : antes de um nome se chama parametro nomeavel
 
         try {
             $consulta = $conexao->prepare($sql);                    
