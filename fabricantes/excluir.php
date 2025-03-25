@@ -1,5 +1,11 @@
 <?php
 require_once "../src/funcoes-fabricantes.php";
+$id = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
+
+//verificando se houve um sim
+if(isset($_GET['confirmar-exclusao'])){
+  
+}
 
 ?>
 
@@ -21,7 +27,7 @@ require_once "../src/funcoes-fabricantes.php";
         <p> Deseja realmente excluir este fabricante?</p>
         
         <a href="visualizar.php" class="btn btn-secondary">Não</a>
-        <a href="?confirmar-exclusao" class="btn btn-danger">Sim</a>        
+        <a href="?id=<?=$id?>& confirmar-exclusao" class="btn btn-danger">Sim</a>        
     </div>
 
 </div>
