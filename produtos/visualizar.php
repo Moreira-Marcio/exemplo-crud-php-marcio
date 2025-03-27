@@ -33,6 +33,7 @@ require_once "../src/funcoes-utilitarias.php";
                     <h4>Fabricante do Produto <?=$produtos["fabricante"]?></h4>
                     <p><b>Preço:</b> <?=formatarPreco($produtos["preco"])?></p>
                     <p><b>Quantidade: </b><?=$produtos["quantidade"]?></p>
+                    <p><b>Total: </b><?=formatarPreco($produtos["preco"]*$produtos["quantidade"])?></p>
                 </article>
             </div>
           <?php endforeach; ?>
