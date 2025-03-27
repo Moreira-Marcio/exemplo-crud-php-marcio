@@ -1,3 +1,8 @@
+<?php 
+ require_once "../src/funcoes-fabricantes.php"; 
+ $listaDeFabricantes = listarFabricantes($conexao);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,9 +35,10 @@
                 <label class="form-label" for="fabricante">Fabricante:</label>
                 <select class="form-select" name="fabricante" id="fabricante" required>
                     <option value=""></option>
-                    <option value="">Fabricante 1...</option>
-                    <option value="">Fabricante 2...</option>
-                    <option value="">Fabricante 3...</option>
+               <?php foreach($listaDeFabricantes as $fabricante): ?>     
+                    <option value="id"><?=$fabricante["nome"]?></option>
+                <?php endforeach; ?>    
+                
                 </select>
             </div>
             <div class="mb-3">
