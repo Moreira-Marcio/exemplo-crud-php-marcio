@@ -1,6 +1,23 @@
 <?php 
  require_once "../src/funcoes-fabricantes.php"; 
  $listaDeFabricantes = listarFabricantes($conexao);
+ require_once "../src/funcoes-produtos.php";
+ 
+ if(isset($_post["inserir"])){
+    //capturar/sanitizar os dados
+    $nome= filter_input( INPUT_POST,"nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $preco=filter_input (INPUT_POST,"preco",FILTER_SANITIZE_NUMBER_FLOAT) ;
+    $quantidade= filter_input( INPUT_POST,"quantidade",FILTER_FLAG_ALLOW_FRACTION);
+    $idFabricante = filter_input( INPUT_POST,"fabricante",FILTER_SANITIZE_NUMBER_INT);
+    $descricao = filter_input( INPUT_POST,"descricao",FILTER_SANITIZE_SPECIAL_CHARS);
+   
+    //chamada da funcao responsavel por inserir produto e passar os parametros
+    inserirProduto($conexao,$nome,$preco,$quantidade,$idFabricante,$descricao);
+   
+    //por fim, redirecionar para visualizar produto
+     header("location:visualizar.php");
+    exit;
+ }
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +53,7 @@
                 <select class="form-select" name="fabricante" id="fabricante" required>
                     <option value=""></option>
                <?php foreach($listaDeFabricantes as $fabricante): ?>     
-                    <option value="id"><?=$fabricante["nome"]?></option>
+                    <option value="<?=$fabricante['id']?>"><?=$fabricante["nome"]?></option>
                 <?php endforeach; ?>    
                 
                 </select>

@@ -22,3 +22,16 @@ function listarProdutos(PDO $conexao):array {
         die ("Erro ao carregar produtos".$erro->getMessage());
     }
 }
+
+function inserirProduto(
+    PDO $conexao, string $nome, float $preco, int $quantidade, int $ideFabricante, string $descricao
+):void {
+    $sql = "INSERT INTO produtos(nome,preco,quantidade,fabricante_id,descricao) VALUES(:nome,:preco,:quantidade,:fabricante_id,:descricao)";
+    try {
+          $consulta = $conexao->prepare($sql);                 
+          $consulta->bindValue(":nome,:preco,:quantidade,:fabricante_id,:descricao",PDO::PARAM_STR);
+          $consulta->execute();
+       } catch (Exception $erro) {
+          die("erro ao inserir".$erro->getMessage());
+       }
+}
