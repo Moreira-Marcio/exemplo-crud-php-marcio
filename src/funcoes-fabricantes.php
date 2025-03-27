@@ -52,7 +52,7 @@ function listarFabricantes(PDO $conexao):array {
 
 
 
-    function atualizarFabricante( $conexao, string $nome, int $idFabricante):void{
+    function atualizarFabricante(PDO $conexao, string $nome, int $idFabricante):void{
         $sql = "UPDATE fabricantes SET nome = :nome WHERE id =:id";
         //UPDATE cursos SET professor_id = 1 WHERE id = 5;
         // : antes de um nome se chama parametro nomeavel
@@ -72,7 +72,7 @@ function listarFabricantes(PDO $conexao):array {
 
     //excluindo um fabruicante
 
-    function excluirFabricante($conexao,$idFabricante):void{
+    function excluirFabricante(PDO $conexao,int $idFabricante):void{
         $sql = "DELETE FROM fabricantes WHERE id = :id";
 
         try {
