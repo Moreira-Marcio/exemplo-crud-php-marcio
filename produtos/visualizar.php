@@ -2,7 +2,12 @@
 require_once "../src/funcoes-produtos.php";
 $listaDeProdutos=listarProdutos($conexao);
 require_once "../src/funcoes-utilitarias.php";
-//$listaDeProdutos=inserirProduto($conexao);
+//obtendo valor do parametro via url
+$id = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
+
+//chamando a função para carregar os dados de um fabricante
+$produtos = listarProdutos($conexao, $id);
+
 
 ?>
 
@@ -30,11 +35,12 @@ require_once "../src/funcoes-utilitarias.php";
         <?php foreach ($listaDeProdutos as $produtos): ?> 
             <div class="col-sm-6 rounded-2 border border-primary border border-3">
                 <article class="bg-body-secundary p-2">
-                    <h3>Nome do Produto <?=$produtos["produto"]?></h3>
+                    <h3> Produto: <?=$produtos["produto"]?></h3>
                     <h4>Fabricante do Produto <?=$produtos["fabricante"]?></h4>
                     <p><b>Preço:</b> <?=formatarPreco($produtos["preco"])?></p>
                     <p><b>Quantidade: </b><?=$produtos["quantidade"]?></p>
                     <p><b>Total: </b><?=formatarPreco($produtos["preco"]*$produtos["quantidade"])?></p>
+                    <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$produtos['id']?>">Atualizar</a>
                 </article>
             </div>
           <?php endforeach; ?>

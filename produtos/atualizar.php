@@ -1,10 +1,22 @@
+<?php 
+require_once "../src/funcoes-produtos.php";
+
+$id = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
+
+$produtos = listarUmProduto($conexao, $id);
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Atualização</title>
+    <title>Produtos - Atualização</title> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -16,20 +28,20 @@
         <form action="" method="post" class="w-50">
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome:</label>
-                <input class="form-control" type="text" name="nome" id="nome" required>
+                <input class="form-control" type="text" name="nome" id="nome" required value="<?=$produtos['nome']?>">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="preco">Preço:</label>
-                <input class="form-control" type="number" min="10" max="10000" step="0.01" name="preco" id="preco" required>
+                <input class="form-control" type="number" min="10" max="10000" step="0.01" name="preco" id="preco" required value="<?=$produtos['preco']?>">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="quantidade">Quantidade:</label>
-                <input class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required>
+                <input class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required value="<?=$produtos['quantidade']?>">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="fabricante">Fabricante:</label>
-                <select class="form-select" name="fabricante" id="fabricante" required>
-                    <option value=""></option>
+                <label class="form-label" for="fabricante">Produto:</label>
+                <select class="form-select" name="produto" id="fabricante" required>
+                    <imput value=""></option>
                     <option value="">Fabricante 1...</option>
                     <option value="">Fabricante 2...</option>
                     <option value="">Fabricante 3...</option>
@@ -37,9 +49,9 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="descricao">Descrição:</label> <br>
-                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"></textarea>
+                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"><?=$produtos['descricao']?></textarea>
             </div>
-            <button class="btn btn-warning" type="submit" name="atualizar">Atualizar produto</button>
+            <button class="btn btn-success" type="submit" name="atualizar">Atualizar produto</button>
         </form>
 
 
