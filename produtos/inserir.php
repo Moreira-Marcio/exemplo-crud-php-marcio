@@ -3,11 +3,12 @@
  $listaDeFabricantes = listarFabricantes($conexao);
  require_once "../src/funcoes-produtos.php";
  
- if(isset($_post["inserir"])){
+ if(isset($_POST["inserir"])){
     //capturar/sanitizar os dados
     $nome= filter_input( INPUT_POST,"nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $preco=filter_input (INPUT_POST,"preco",FILTER_SANITIZE_NUMBER_FLOAT) ;
-    $quantidade= filter_input( INPUT_POST,"quantidade",FILTER_FLAG_ALLOW_FRACTION);
+    $preco=filter_input (INPUT_POST,"preco",FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION) ;
+    $quantidade= filter_input( INPUT_POST,"quantidade",FILTER_SANITIZE_NUMBER_INT);
+    //lembre-se que capturamos na verdade o value que no caso é o id do fabricante
     $idFabricante = filter_input( INPUT_POST,"fabricante",FILTER_SANITIZE_NUMBER_INT);
     $descricao = filter_input( INPUT_POST,"descricao",FILTER_SANITIZE_SPECIAL_CHARS);
    

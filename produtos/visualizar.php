@@ -2,6 +2,7 @@
 require_once "../src/funcoes-produtos.php";
 $listaDeProdutos=listarProdutos($conexao);
 require_once "../src/funcoes-utilitarias.php";
+//$listaDeProdutos=inserirProduto($conexao);
 
 ?>
 
